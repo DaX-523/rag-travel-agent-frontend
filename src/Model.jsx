@@ -3,7 +3,7 @@ import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 
 function Model({ isSpeaking }) {
-  const { scene, nodes } = useGLTF("/src/assets/67f292005630b448a3d7176d.glb");
+  const { scene } = useGLTF("/src/assets/67f292005630b448a3d7176d.glb");
   const modelRef = useRef();
 
   // Store animation state
