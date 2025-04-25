@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef, Suspense } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { useState, useEffect, useRef } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import Model from "./Model";
 // const BASE_URL = "https://travel-agent-p4sm.onrender.com";
 const BASE_URL = "http://localhost:3002";
@@ -141,7 +141,7 @@ function App() {
     // Cancel any ongoing speech
     window.speechSynthesis.cancel();
 
-    // Create new speech utterance
+    // Create new speech utterance - browser
     const utterance = new SpeechSynthesisUtterance(text);
 
     // Configure voice settings
@@ -234,7 +234,7 @@ function App() {
       const decoder = new TextDecoder();
 
       if (!reader) {
-        throw new Error("Response body is not readable");
+        throw new Error("Response body isn't readable");
       }
 
       let accumulatedMessage = "";
