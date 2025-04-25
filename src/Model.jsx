@@ -3,7 +3,12 @@ import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 
 function Model({ isSpeaking }) {
-  const { scene, nodes } = useGLTF("/src/assets/67f292005630b448a3d7176d.glb");
+  // Using a path without leading slash so it works in both dev and production
+  const { scene, nodes } = useGLTF("assets/67f292005630b448a3d7176d.glb");
+
+  // Preload the model
+  useGLTF.preload("assets/67f292005630b448a3d7176d.glb");
+
   const modelRef = useRef();
 
   // Store animation state
@@ -14,14 +19,18 @@ function Model({ isSpeaking }) {
 
   // Log available morph targets when model loads
   useEffect(() => {
-    scene.traverse((child) => {
-      if (child.morphTargetDictionary) {
-        console.log(
-          "Available morph targets:",
-          Object.keys(child.morphTargetDictionary)
-        );
-      }
-    });
+    try {
+      scene.traverse((child) => {
+        if (child.morphTargetDictionary) {
+          console.log(
+            "Available morph targets:",
+            Object.keys(child.morphTargetDictionary)
+          );
+        }
+      });
+    } catch (error) {
+      console.error("Error accessing model:", error);
+    }
   }, [scene]);
 
   // Animate mouth using morph targets

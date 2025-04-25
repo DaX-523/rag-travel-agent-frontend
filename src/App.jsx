@@ -1,9 +1,23 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import Model from "./Model";
+// const BASE_URL = "https://travel-agent-p4sm.onrender.com";
+const BASE_URL = "http://localhost:3002";
 
 // 3D Model Viewer Component
+
+// Fallback component when model is loading or errors
+function ModelFallback() {
+  return (
+    <mesh>
+      <sphereGeometry args={[1, 32, 32]} />
+      <meshStandardMaterial color="#2ea043" />
+      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+      <ambientLight intensity={0.5} />
+    </mesh>
+  );
+}
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -36,7 +50,7 @@ function App() {
   // Fetch all conversation threads
   const fetchThreads = async () => {
     try {
-      const response = await fetch("http://localhost:8084/threads");
+      const response = await fetch(`${BASE_URL}/threads`);
       if (response.ok) {
         const data = await response.json();
         setThreads(data.threads || []);
@@ -56,7 +70,7 @@ function App() {
     setAssistantMessageLoading(true);
 
     try {
-      const response = await fetch(`http://localhost:8084/threads/${threadId}`);
+      const response = await fetch(`${BASE_URL}/threads/${threadId}`);
       if (response.ok) {
         const data = await response.json();
         if (data.messages && data.messages.length > 0) {
@@ -198,20 +212,16 @@ function App() {
     setCurrentAssistantMessage("");
 
     try {
-      // Determine if it's a new thread or continuing conversation
-      const endpoint =
-        activeThreadId && !newThreadStarted
-          ? `http://localhost:8084/stream/${activeThreadId}`
-          : "http://localhost:8084/stream";
-
+      const thread_id = activeThreadId;
       // Direct passthrough of the user's message to the LLM
-      const response = await fetch(endpoint, {
+      const response = await fetch(`${BASE_URL}/stream`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           prompt: userMessage,
+          threadId: thread_id,
         }),
       });
 
@@ -578,11 +588,14 @@ function App() {
                   color="#ffffff"
                 />
 
-                <Model isSpeaking={isSpeaking} />
+                {/* Wrap the Model component in Suspense to handle loading */}
+                <Suspense fallback={<ModelFallback />}>
+                  <Model isSpeaking={isSpeaking} />
+                </Suspense>
                 <OrbitControls
-                  enableZoom={true}
-                  enablePan={true}
-                  enableRotate={true}
+                  enableZoom={false}
+                  enablePan={false}
+                  enableRotate={false}
                   minDistance={4.8}
                   maxDistance={4.8}
                 />
