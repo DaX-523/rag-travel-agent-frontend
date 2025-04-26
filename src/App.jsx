@@ -2,8 +2,8 @@ import { useState, useEffect, useRef, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Model from "./Model";
-// const BASE_URL = "https://travel-agent-p4sm.onrender.com";
-const BASE_URL = "http://localhost:3002";
+const BASE_URL = "https://travel-agent-kecc.onrender.com";
+// const BASE_URL = "http://localhost:3002";
 
 // 3D Model Viewer Component
 
@@ -494,7 +494,7 @@ function App() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Chat Area - Restructured layout */}
-        <div className="flex-1 flex flex-col md:flex-row overflow-hidden ">
+        <div className="flex-1 flex flex-col md:flex-row overflow-hidden h-full">
           {/* 3D Model Display - Left Side */}
           <div className="hidden md:flex md:w-1/2 bg-gradient-to-br from-[#111111] via-[#1a1a1a] to-[#0a0a0a] border-r border-white/5 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-[#2ea043]/5 via-transparent to-[#34d399]/5"></div>
@@ -632,16 +632,16 @@ function App() {
           </div>
 
           {/* Chat Messages - Right Side */}
-          <div className="w-full md:w-1/2 flex flex-col ">
+          <div className="w-full md:w-1/2 flex flex-col h-full">
             <div
               ref={chatAreaRef}
-              className="flex-1 p-6 overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
+              className="flex-1 p-6 overflow-y-auto scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent pb-4"
             >
               <div className="max-w-2xl mx-auto">
                 {/* Mobile Welcome Section */}
                 <div className="md:hidden text-center mb-8">
                   <h1 className="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-[#2ea043] to-[#34d399] bg-clip-text text-transparent">
-                    Chat with me
+                    Chat with Me
                   </h1>
                   <p className="text-gray-400 text-sm">
                     Ask me anything about travel planning
@@ -723,7 +723,7 @@ function App() {
             </div>
 
             {/* Input Area */}
-            <div className="p-4 bg-[#111111]/70 backdrop-blur-xl border-t border-white/5">
+            <div className="p-4 bg-[#111111]/70 backdrop-blur-xl border-t border-white/5 sticky bottom-0 left-0 right-0 z-10">
               <div className="max-w-2xl mx-auto">
                 <div className="relative">
                   <input
