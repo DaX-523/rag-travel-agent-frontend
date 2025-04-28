@@ -1,0 +1,1 @@
+export const NavItems = ["Packages", "About", "Contact"];
