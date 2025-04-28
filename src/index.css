@@ -50,7 +50,7 @@ body {
 
   .nav-hover-btn::after {
     @apply absolute -bottom-0.5 left-0 h-[2px] w-full origin-bottom-right scale-x-0 transition-transform duration-300 ease-[cubic-bezier(0.65_0.05_0.36_1)];
-    background-color: #ffff; /* This is neutral-800 manually */
+    background-color: #ffff;
     content: "";
   }
 
@@ -182,9 +182,9 @@ body {
   }
 }
 
-/* From Uiverse.io by G4b413l */
-/* https://uiverse.io/G4b413l/tidy-walrus-92 */
+/* From Uiverse.io by G4b413l - https://uiverse.io/G4b413l/tidy-walrus-92 */
 /*For Loader */
+
 .three-body {
   --uib-size: 35px;
   --uib-speed: 0.8s;
