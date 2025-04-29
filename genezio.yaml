@@ -1,15 +1,15 @@
-name: rag-travel-agent-frontend
-region: us-east-1
-yamlVersion: 2
 frontend:
     path: .
     publish: dist
     scripts:
-        deploy:
-            - npm install
         build:
             - npm run build
+        deploy:
+            - npm install
         start:
             - npm install
             - npm run dev
     subdomain: purple-flaky-antlion
+name: rag-travel-agent-frontend2
+region: eu-central-1
+yamlVersion: 2
