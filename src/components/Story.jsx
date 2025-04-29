@@ -49,10 +49,6 @@ const FloatingImage = () => {
   return (
     <div id="story" className="min-h-dvh w-screen bg-black text-blue-50">
       <div className="flex size-full flex-col items-center py-10 pb-24">
-        <p className="font-general text-sm md:text-[10px]">
-          THE MULTIVERSAL TRAVEL WORLD
-        </p>
-
         <div className="relative size-full">
           <AnimatedTitle
             title="The St<b>o</b>ry of Zi<b>r</b>a <b>:</b> <br /> Craf<b>t</b>ing Your hidden Adve<b>n</b>tur<b>e</b>"
@@ -77,7 +73,8 @@ const FloatingImage = () => {
             {/* for image rounded corner */}
             <svg
               className="invisible absolute size-0"
-              xmlns="http://www.w3.org/2000/svg">
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <defs>
                 <filter id="flt_tag">
                   <feGaussianBlur

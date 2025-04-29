@@ -29,10 +29,6 @@ const About = () => {
   return (
     <div id="about" className="min-h-screen w-screen">
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
-        <p className="font-general text-sm uppercase md:text-[10px]">
-          Welcome to Zira
-        </p>
-
         <AnimatedTitle
           title="Unl<b>o</b>ck the world's <br /> most unforgettable <b>a</b>dventures"
           containerClass="mt-5 !text-black text-center"
@@ -40,14 +36,12 @@ const About = () => {
 
         <div className="about-subtext">
           <p className="block md:hidden">
-            Every adventure, one platform, from dream to
-            destination.
+            Every adventure, one platform, from dream to destination.
           </p>
           <p className="text-gray-500 hidden md:block">
-            Plan smarter, travel better. Organize every
-            journey—flights, stays, experiences—into one
-            seamless itinerary, accessible anytime, anywhere
-            you go.
+            Plan smarter, travel better. Organize every journey—flights, stays,
+            experiences—into one seamless itinerary, accessible anytime,
+            anywhere you go.
           </p>
         </div>
       </div>
