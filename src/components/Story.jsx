@@ -47,7 +47,7 @@ const FloatingImage = () => {
   };
 
   return (
-    <div id="story" className="min-h-dvh w-screen bg-black text-blue-50">
+    <div id="story" className="min-h-dvh w-screen bg-black text-blue-50 -mt-36 md:-mt-30">
       <div className="flex size-full flex-col items-center py-10 pb-24">
         <div className="relative size-full">
           <AnimatedTitle
@@ -99,7 +99,7 @@ const FloatingImage = () => {
           </div>
         </div>
 
-        <div className="-mt-16 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end">
+        <div className="mt-[-370px] flex w-full justify-center md:-mt-52 md:me-44 md:justify-end">
           <div className="flex h-full w-fit flex-col items-center md:items-start">
             <p className="mt-3 max-w-sm text-center font-circular-web text-violet-50 md:text-justify">
               Zira is designed to transform your travel planning experience,
