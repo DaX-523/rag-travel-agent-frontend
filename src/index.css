@@ -7,7 +7,7 @@
 html,
 body {
   width: 100dvw;
-  overflow-x: hidden;
+  overflow: hidden;
   background-color: #dfdff0;
   font-family: "General Sans", sans-serif;
 }

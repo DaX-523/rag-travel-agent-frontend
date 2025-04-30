@@ -346,12 +346,12 @@ function App() {
   };
 
   return (
-    <div className="h-screen w-screen flex bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a]">
+    <div className="h-screen mt-4 w-screen flex bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a]">
       {/* Sidebar */}
       <div
         className={`w-[280px] bg-[#111111]/70 backdrop-blur-xl border-r border-white/5 flex flex-col transition-all duration-300 ease-in-out ${
           sidebarVisible ? "translate-x-0" : "-translate-x-full"
-        } absolute left-0 top-0 h-full z-20`}
+        } absolute left-0 top-6 h-full z-20`}
       >
         {/* App Logo */}
         <div className="px-6 h-16 flex items-center border-b border-white/5">
@@ -454,7 +454,7 @@ function App() {
       {/* Sidebar Toggle Button */}
       <button
         onClick={() => setSidebarVisible(!sidebarVisible)}
-        className="absolute top-4 left-4 z-30 w-10 h-10 rounded-lg bg-gradient-to-br from-[#2ea043] to-[#34d399] flex items-center justify-center shadow-lg shadow-[#2ea043]/20 hover:brightness-110 transition-all duration-200 group"
+        className="absolute mt-4 top-4 left-4 z-30 w-10 h-10 rounded-lg bg-gradient-to-br from-[#2ea043] to-[#34d399] flex items-center justify-center shadow-lg shadow-[#2ea043]/20 hover:brightness-110 transition-all duration-200 group"
       >
         <div className="relative w-5 h-4 flex flex-col justify-between transition-all duration-300">
           <span
@@ -630,7 +630,33 @@ function App() {
               </div>
             </div>
           </div>
-
+          {/* Mobile Header - Only visible on mobile */}
+          {/* <div className="w-full h-full flex flex-col">
+            <div className="md:hidden flex items-center justify-center p-4 border-b border-white/5 bg-[#111111]/70 backdrop-blur-xl">
+              <div className="flex items-center gap-3">
+                <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#2ea043] to-[#34d399] flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-4 h-4 text-white"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"
+                    />
+                  </svg>
+                </div>
+                <span className="text-lg font-semibold bg-gradient-to-r from-[#2ea043] to-[#34d399] bg-clip-text text-transparent">
+                  Zira
+                </span>
+                <span className="text-xs text-gray-400">AI Travel Guide</span>
+              </div>
+            </div>
+            </div> */}
           {/* Chat Messages - Right Side */}
           <div className="w-full md:w-1/2 flex flex-col h-full">
             <div
@@ -723,7 +749,7 @@ function App() {
             </div>
 
             {/* Input Area */}
-            <div className="p-4 bg-[#111111]/70 backdrop-blur-xl border-t border-white/5 sticky bottom-0 left-0 right-0 z-10">
+            <div className="p-4 bg-[#111111]/70 backdrop-blur-xl border-t border-white/5 sticky bottom-12 left-0 right-0 z-10">
               <div className="max-w-2xl mx-auto">
                 <div className="relative">
                   <input
