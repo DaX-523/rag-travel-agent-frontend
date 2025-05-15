@@ -815,7 +815,7 @@ function App() {
               </div>
 
               {/* Input Area */}
-              <div className="p-4 bg-[#111111]/70 backdrop-blur-xl border-t border-white/5 sticky bottom-12 lg:bottom-0 left-0 right-0 z-10">
+              <div className="p-4 bg-[#111111]/70 backdrop-blur-xl border-t border-white/5 sticky bottom-16 lg:bottom-0 left-0 right-0 z-10">
                 <div className="max-w-2xl mx-auto">
                   <div className="relative">
                     <input
