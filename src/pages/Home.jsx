@@ -15,12 +15,12 @@ const Home = () => {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
-  // Redirect to chat if already authenticated
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/chat");
-    }
-  }, [isAuthenticated, navigate]);
+  // Removed automatic redirect to allow viewing homepage when authenticated
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     navigate("/chat");
+  //   }
+  // }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     if (isLoading) {

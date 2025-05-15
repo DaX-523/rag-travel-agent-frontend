@@ -86,14 +86,14 @@ const Navbar = () => {
               id="product-button"
               title={isAuthenticated ? "Go to Chat" : "Chat with Zira"}
               rightIcon={<TiLocationArrow />}
-              containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
+              containerClass="bg-blue-50 lg:flex hidden items-center justify-center gap-1"
               onClick={handleButtonClick}
             />
           </div>
 
           {/* Nav Links and Audio Button */}
-          <div className="flex h-full items-center">
-            <div className="hidden md:block">
+          <div className="flex h-full items-center mr-8">
+            <div className="hidden lg:block">
               {NavItems.map((item, index) => (
                 <a
                   key={index}
@@ -126,6 +126,16 @@ const Navbar = () => {
               )}
             </div>
 
+            {/* Mobile Chat Button */}
+            <Button
+              id="mobile-chat-button"
+              title={"Chat"}
+              rightIcon={<TiLocationArrow />}
+              containerClass="lg:hidden flex items-center justify-center gap-1 px-1 py-[6px] !bg-[#34d399]"
+              onClick={handleButtonClick}
+            />
+
+            {/* Audio button with fixed positioning */}
             <button
               onClick={toggleAudioIndicator}
               className="ml-10 flex items-center space-x-0.5"
