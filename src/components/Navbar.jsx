@@ -6,9 +6,11 @@ import { TiLocationArrow } from "react-icons/ti";
 import Button from "./custom/Button";
 import { NavItems } from "../constants/TextConstants";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { isAuthenticated, logout } = useAuth();
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [isIndicatorActive, setIsIndicatorActive] = useState(false);
 
@@ -61,10 +63,19 @@ const Navbar = () => {
     });
   }, [isNavVisible]);
 
+  const handleButtonClick = () => {
+    if (isAuthenticated) {
+      navigate("/chat");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <div
       ref={navContainerRef}
-      className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6">
+      className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
+    >
       <header className="absolute top-1/2 w-screen md:w-full -translate-y-1/2">
         <nav className="flex size-full items-center justify-between p-4">
           {/* Logo and chat button */}
@@ -73,10 +84,10 @@ const Navbar = () => {
 
             <Button
               id="product-button"
-              title="Chat with Zira"
+              title={isAuthenticated ? "Go to Chat" : "Chat with Zira"}
               rightIcon={<TiLocationArrow />}
               containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
-              onClick={() => navigate("/login")}
+              onClick={handleButtonClick}
             />
           </div>
 
@@ -87,15 +98,38 @@ const Navbar = () => {
                 <a
                   key={index}
                   href={`#${item.toLowerCase()}`}
-                  className="nav-hover-btn">
+                  className="nav-hover-btn"
+                >
                   {item}
                 </a>
               ))}
+
+              {!isAuthenticated ? (
+                <>
+                  <a
+                    onClick={() => navigate("/login")}
+                    className="nav-hover-btn cursor-pointer"
+                  >
+                    Login
+                  </a>
+                  <a
+                    onClick={() => navigate("/signup")}
+                    className="nav-hover-btn cursor-pointer"
+                  >
+                    Sign Up
+                  </a>
+                </>
+              ) : (
+                <a onClick={logout} className="nav-hover-btn cursor-pointer">
+                  Logout
+                </a>
+              )}
             </div>
 
             <button
               onClick={toggleAudioIndicator}
-              className="ml-10 flex items-center space-x-0.5">
+              className="ml-10 flex items-center space-x-0.5"
+            >
               <audio
                 ref={audioElementRef}
                 className="hidden"

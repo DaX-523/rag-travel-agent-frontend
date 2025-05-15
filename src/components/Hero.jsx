@@ -6,11 +6,13 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import { heroVideoLinks } from "../constants/heroVideoLinks";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = ({ setIsLoading }) => {
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
   const [currentIndex, setCurrentIndex] = useState(1);
   const [hasClicked, setHasClicked] = useState(false);
   const [loadedVideos, setLoadedVideos] = useState(0);
@@ -36,7 +38,13 @@ const Hero = ({ setIsLoading }) => {
     setCurrentIndex(upcomingVideoIndex);
   };
 
-  useEffect;
+  const handleChatButtonClick = () => {
+    if (isAuthenticated) {
+      navigate("/chat");
+    } else {
+      navigate("/login");
+    }
+  };
 
   // GSAP Animation
   useGSAP(
@@ -87,14 +95,16 @@ const Hero = ({ setIsLoading }) => {
     <div className="relative h-dvh w-screen overflow-x-hidden">
       <div
         id="video-frame"
-        className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75">
+        className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
+      >
         <div>
           <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
             {/* Hero Head */}
 
             <div
               onClick={handleMiniVideoClick}
-              className="origin-center scale-50 opacity-0 hidden sm:block md:block transition-all duration-500 ease-in hover:scale-100 hover:opacity-100">
+              className="origin-center scale-50 opacity-0 hidden sm:block md:block transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
+            >
               <video
                 ref={nextVideoRef}
                 src={getVideoSrc((currentIndex % totalVideos) + 1)}
@@ -150,10 +160,10 @@ const Hero = ({ setIsLoading }) => {
 
               <Button
                 id="watch-trailer"
-                title="Chat Now"
+                title={isAuthenticated ? "Go to Chat" : "Chat Now"}
                 leftIcon={<BiSolidPlaneAlt />}
                 containerClass="!bg-yellow-300 flex-center gap-1"
-                onClick={() => navigate("/login")}
+                onClick={handleChatButtonClick}
               />
             </div>
           </div>

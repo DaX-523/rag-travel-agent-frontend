@@ -1,8 +1,12 @@
-/** @type {import('tailwindcss').Config} */
-const withMT = require("@material-tailwind/react/utils/withMT");
-
-module.exports = withMT({
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+export default {
+  darkMode: ["class"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
+  prefix: "",
   theme: {
     container: {
       center: true,
@@ -12,13 +16,6 @@ module.exports = withMT({
       },
     },
     extend: {
-      fontFamily: {
-        zentry: ["zentry", "sans-serif"],
-        general: ["general", "sans-serif"],
-        "circular-web": ["circular-web", "sans-serif"],
-        "robert-medium": ["robert-medium", "sans-serif"],
-        "robert-regular": ["robert-regular", "sans-serif"],
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -67,20 +64,6 @@ module.exports = withMT({
           light: "#87CEEB",
           DEFAULT: "#3498db",
           dark: "#2c3e50",
-        },
-        blue: {
-          50: "#DFDFF0",
-          75: "#dfdff2",
-          100: "#F0F2FA",
-          200: "#010101",
-          300: "#4FB7DD",
-        },
-        violet: {
-          300: "#5724ff",
-        },
-        yellow: {
-          100: "#8e983f",
-          300: "#edff66",
         },
       },
       borderRadius: {
@@ -189,5 +172,5 @@ module.exports = withMT({
       },
     },
   },
-  plugins: [],
-});
+  plugins: [require("tailwindcss-animate")],
+};
